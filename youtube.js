@@ -1,12 +1,12 @@
 const request = require('request');
+const config = require("./auth.json");
 
-const API_KEY = "AIzaSyATIjw259wHqgso7wYBWZi0k3fG7-7fpmI";
 const WATCH_VIDEO_URL = "https://www.youtube.com/watch?v=";
 
 exports.watchVideoUrl = WATCH_VIDEO_URL;
 
 exports.search = function search(searchKeywords, callback) {
-    var requestUrl = 'https://www.googleapis.com/youtube/v3/search' + `?part=snippet&q=${escape(searchKeywords)}&key=${API_KEY}`;
+    var requestUrl = 'https://www.googleapis.com/youtube/v3/search' + `?part=snippet&q=${escape(searchKeywords)}&key=${config.api_key}`;
 
     request(requestUrl, (error, response) => {
         if (!error && response.statusCode == 200) {
